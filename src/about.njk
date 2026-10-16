@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: About
+permalink: /about/
+---
+<h2>About</h2>
+<p>Write the introduction to the blog here: what it covers, who it's for, and why it exists.</p>
+<p>A second paragraph if you need it — how often you post, how to get in touch, etc.</p>
+
+<!-- Authors come from src/_data/authors.json. Photos go in src/pictures/. -->
+<section class="authors">
+  {%- for id, a in authors %}
+  <div class="author" id="{{ id }}">
+    <div class="avatar"><img src="{{ a.photo }}" alt="{{ a.name }}"></div>
+    <h3>{{ a.name }}</h3>
+    <p>{{ a.bio }}</p>
+  </div>
+  {%- endfor %}
+</section>

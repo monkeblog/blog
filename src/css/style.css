@@ -56,7 +56,7 @@ a:hover { text-decoration: none; }
   color: var(--banner-text);
   background:
     linear-gradient(var(--banner-overlay), var(--banner-overlay)),
-    url("pictures/banner.jpg") center / cover no-repeat;
+    url("../pictures/banner.jpg") center / cover no-repeat;
 }
 .banner h1 {
   margin: 0;

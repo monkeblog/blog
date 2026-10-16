@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/main.js"></script>
+</head>
+<body>
+  <header class="banner">
+    <h1><a href="/">{{ site.title }}</a></h1>
+  </header>
+
+  {%- set nav = [
+    { label: "Home",    url: "/" },
+    { label: "Archive", url: "/archive/" },
+    { label: "About",   url: "/about/" }
+  ] %}
+  <nav class="tabs">
+    <ul>
+      {%- for item in nav %}
+      <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {%- endfor %}
+    </ul>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">☾</button>
+  </nav>
+
+  <main class="content{% if mainClass %} {{ mainClass }}{% endif %}">
+    {{ content | safe }}
+  </main>
+
+  <footer>{{ site.footer }}</footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{# Tag chips — link to the Archive filtered by that tag #}
+{% macro postTags(tags) %}
+{%- set list = tags | topicTags %}
+{%- if list.length %}
+<div class="tags">
+  {%- for t in list %}
+  <a class="tag" href="/archive/?tag={{ t | urlencode }}">{{ t }}</a>
+  {%- endfor %}
+</div>
+{%- endif %}
+{% endmacro %}
+
+{# Author name linking to their block on the About page #}
+{% macro authorLink(id, authors) %}<a href="/about/#{{ id }}">{{ authors[id].name if authors[id] else id }}</a>{% endmacro %}

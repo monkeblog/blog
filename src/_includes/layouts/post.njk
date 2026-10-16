@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+{%- from "macros.njk" import postTags, authorLink %}
+<article>
+  <header>
+    <h2>{{ title }}</h2>
+    <div class="meta">
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> ·
+      {{ authorLink(author, authors) }}
+    </div>
+    {{ postTags(tags) }}
+  </header>
+
+  {{ content | safe }}
+
+  <p><a href="/archive/">← Back to archive</a></p>
+</article>

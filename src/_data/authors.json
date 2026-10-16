@@ -1,0 +1,17 @@
+{
+  "author-1": {
+    "name": "Author One",
+    "photo": "/pictures/author-1.jpg",
+    "bio": "A short bio — background, interests, what they write about."
+  },
+  "author-2": {
+    "name": "Author Two",
+    "photo": "/pictures/author-2.jpg",
+    "bio": "A short bio — background, interests, what they write about."
+  },
+  "author-3": {
+    "name": "Author Three",
+    "photo": "/pictures/author-3.jpg",
+    "bio": "A short bio — background, interests, what they write about."
+  }
+}

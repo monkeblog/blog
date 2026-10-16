@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: Archive
+mainClass: archive
+permalink: /archive/
+---
+{%- from "macros.njk" import postTags, authorLink %}
+<h2>Archive</h2>
+
+<!-- Filled automatically from the posts' data-tags (main.js) -->
+<div class="tags all-tags"></div>
+
+<p class="tag-filter" hidden>
+  Showing posts tagged <strong class="tag-name"></strong> · <a href="/archive/">show all</a>
+</p>
+
+{%- for group in collections.postsByYear %}
+<section class="year">
+  <h3>{{ group.year }}</h3>
+  <ul>
+    {%- for post in group.posts %}
+    <li data-tags="{{ post.data.tags | topicTags | join(', ') }}">
+      <time datetime="{{ post.date | isoDate }}">{{ post.date | shortDate }}</time>
+      <div class="entry">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <div class="meta">by {{ authorLink(post.data.author, authors) }}</div>
+        {{ postTags(post.data.tags) }}
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
