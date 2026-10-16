@@ -11,8 +11,10 @@ layout: layouts/base.njk
       <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time> ·
       {{ authorLink(post.data.author, authors) }}
     </div>
-    {%- if post.data.summary %}
-    <p>{{ post.data.summary }}</p>
+    {#- Preview: "summary" from front matter if set, otherwise the post's first paragraph #}
+    {%- set preview = post.data.summary or (post.content | firstParagraph) %}
+    {%- if preview %}
+    <p class="summary">{{ preview | safe }}</p>
     {%- endif %}
     {{ postTags(post.data.tags) }}
   </li>

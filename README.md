@@ -6,7 +6,8 @@ npm start        # live preview at http://localhost:8080
 npm run build    # outputs the site to _site/
 ```
 
-- New post: copy a file in `src/posts/`, edit its front matter (title, date, author, summary, tags).
+- New post: copy a file in `src/posts/`, edit its front matter (title, date, author, tags). The Home preview is the first paragraph; add `summary: ...` to override it.
+- Footnotes in posts: `text[^1]` in the body, `[^1]: the note` anywhere below.
 - Authors: `src/_data/authors.json` (photos in `src/pictures/`).
 - Site name / footer: `src/_data/site.json`.
 - Styles: `src/css/style.css`. Banner image: `src/pictures/banner.jpg`.

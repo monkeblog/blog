@@ -1,12 +1,15 @@
 /* ---------- Tokens ---------- */
 :root {
-  --bg: #faf8f4;
-  --surface: #ffffff;
-  --text: #22201c;
-  --muted: #6b665d;
-  --accent: #8a5a2b;
-  --border: #e4dfd5;
-  --tag-bg: #f1ebe0;
+  /* Parchment palette */
+  --wall: #d6c4a0;      /* margins either side of the page */
+  --bar: #e8d9b6;       /* tab bar */
+  --bg: #f3e8cf;        /* the page (centre rectangle) */
+  --surface: #f9f1de;   /* cards, code blocks */
+  --text: #33281c;
+  --muted: #76634b;
+  --accent: #8a3b22;
+  --border: #dbc8a2;
+  --tag-bg: #e8d8b5;
   --banner-text: #ffffff;
   --banner-overlay: rgba(0, 0, 0, 0.4);
   --font-body: Georgia, "Times New Roman", serif;
@@ -16,13 +19,15 @@
 
 /* Set by the toggle (main.js) */
 :root[data-theme="dark"] {
-  --bg: #1a1815;
-  --surface: #23201c;
-  --text: #e9e4da;
-  --muted: #a59e91;
-  --accent: #d39a5f;
-  --border: #3a352e;
-  --tag-bg: #2f2b25;
+  --wall: #14110e;
+  --bar: #1d1915;
+  --bg: #27211a;
+  --surface: #2f2820;
+  --text: #e9dfca;
+  --muted: #a8987d;
+  --accent: #d9925f;
+  --border: #3e3429;
+  --tag-bg: #3a3127;
   --banner-overlay: rgba(0, 0, 0, 0.55);
   color-scheme: dark;
 }
@@ -33,11 +38,14 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--wall);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 1.125rem;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 a { color: var(--accent); }
@@ -71,7 +79,7 @@ a:hover { text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--surface);
+  background: var(--bar);
   border-bottom: 1px solid var(--border);
 }
 .tabs ul {
@@ -120,22 +128,25 @@ a:hover { text-decoration: none; }
   .tabs ul { justify-content: flex-start; padding-left: 0.5rem; }
 }
 
-/* ---------- Centered text column ---------- */
-/* Fills the window, but never wider than half the screen. */
+/* ---------- Centre page ---------- */
+/* Fixed-width parchment page. As the window narrows, the margins shrink;
+   once the window is narrower than the page, the page fills the window.
+   Set --page-width to half your screen width (screen.width / 2). */
+:root { --page-width: 740px; }
+
 .content {
+  flex: 1;
   width: 100%;
-  max-width: 50vw;
+  max-width: var(--page-width);
   margin: 0 auto;
-  padding: 2.5rem 0 4rem;
+  padding: 2.5rem 3rem 4rem;
+  background: var(--bg);
+  box-shadow: 0 0 24px rgba(60, 40, 15, 0.18);
 }
 
-/* On narrow screens, half the screen is too cramped — use full width with gutters. */
-@media (max-width: 900px) {
-  .content {
-    max-width: none;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+/* Smaller inner padding on phones */
+@media (max-width: 600px) {
+  .content { padding: 2rem 1rem 3rem; }
 }
 
 .content h2 { margin-top: 0; }
@@ -177,7 +188,16 @@ a:hover { text-decoration: none; }
 .post-list h3 { margin: 0 0 0.25rem; font-size: 1.35rem; }
 .post-list h3 a { color: var(--text); text-decoration: none; }
 .post-list h3 a:hover { color: var(--accent); }
-.post-list p { margin: 0.4rem 0 0; color: var(--muted); }
+.post-list p {
+  margin: 0.4rem 0 0;
+  font-size: 1rem;
+  color: var(--muted);
+  /* Summary: at most 2 lines, then "…" (delete these 4 lines to show it all) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 
 /* ---------- Archive ---------- */
 .tag-filter {
@@ -274,8 +294,79 @@ article blockquote {
 footer {
   text-align: center;
   padding: 2rem 1rem;
-  border-top: 1px solid var(--border);
   font-family: var(--font-ui);
   font-size: 0.85rem;
   color: var(--muted);
+}
+
+/* ---------- Footnotes ---------- */
+/* Keep jump targets clear of the sticky tab bar */
+.footnote-ref a, .footnote-item { scroll-margin-top: 4.5rem; }
+.footnote-ref a { text-decoration: none; font-family: var(--font-ui); font-size: 0.75em; padding: 0 0.1em; }
+.footnote-ref a:hover { text-decoration: underline; }
+hr.footnotes-sep { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0 1rem; }
+.footnotes { font-size: 0.95rem; color: var(--muted); }
+.footnotes-list { list-style: none; padding: 0; }
+.footnote-item { padding: 0.2rem 0.25rem; border-radius: 4px; }
+.footnote-item:target { background: var(--tag-bg); }
+/* The note's number links back to where it was referenced */
+.footnote-num { float: left; width: 1.75rem; text-decoration: none; }
+.footnote-num:hover { text-decoration: underline; }
+.footnote-item p { margin: 0 0 0 1.75rem; }
+
+/* ---------- Previous / next post ---------- */
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.post-nav-link {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;               /* lets the title shrink so the ellipsis works */
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--text);
+}
+.post-nav-link:hover { border-color: var(--accent); }
+.post-nav-link.next { grid-column: 2; text-align: right; }
+.post-nav-label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.post-nav-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;    /* long titles end in … */
+}
+@media (max-width: 600px) {
+  .post-nav { grid-template-columns: 1fr; }
+  .post-nav-link.next { grid-column: 1; }
+}
+
+/* Tags at the bottom of a post */
+.post-tags { margin-top: 2rem; padding: 0; border: 0; text-align: left; }
+
+/* In posts: *** on its own line = "* * *" section break, --- = a plain line */
+article hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+article hr.section-break {
+  border-top: 0;
+  text-align: center;
+  color: var(--muted);
+}
+article hr.section-break::before {
+  content: "✽✽✽";
+  letter-spacing: 0.5em;
+  font-size: 0.7rem;
 }

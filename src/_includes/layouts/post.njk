@@ -9,10 +9,31 @@ layout: layouts/base.njk
       <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> ·
       {{ authorLink(author, authors) }}
     </div>
-    {{ postTags(tags) }}
   </header>
 
   {{ content | safe }}
 
-  <p><a href="/archive/">← Back to archive</a></p>
+  <footer class="post-tags">{{ postTags(tags) }}</footer>
 </article>
+
+{#- collections.posts is oldest → newest, so "previous" = older, "next" = newer #}
+{%- set prevPost = collections.posts | getPreviousCollectionItem(page) %}
+{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+{%- if prevPost or nextPost %}
+<nav class="post-nav" aria-label="More posts">
+  {%- if prevPost %}
+  <a class="post-nav-link prev" href="{{ prevPost.url }}" title="{{ prevPost.data.title }}">
+    <span class="post-nav-label">← Previous</span>
+    <span class="post-nav-title">{{ prevPost.data.title }}</span>
+  </a>
+  {%- else %}<span></span>{%- endif %}
+  {%- if nextPost %}
+  <a class="post-nav-link next" href="{{ nextPost.url }}" title="{{ nextPost.data.title }}">
+    <span class="post-nav-label">Next →</span>
+    <span class="post-nav-title">{{ nextPost.data.title }}</span>
+  </a>
+  {%- endif %}
+</nav>
+{%- endif %}
+
+<p class="more"><a href="/archive/">← Back to archive</a></p>
