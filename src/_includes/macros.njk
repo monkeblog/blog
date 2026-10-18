@@ -12,3 +12,14 @@
 
 {# Author name linking to their block on the About page #}
 {% macro authorLink(id, authors) %}<a href="/about/#{{ id }}">{{ authors[id].name if authors[id] else id }}</a>{% endmacro %}
+
+{# Author on its own line with their profile picture: <icon> Name #}
+{% macro authorByline(id, authors) %}
+{%- set a = authors[id] %}
+<div class="byline">
+  <a href="/about/#{{ id }}">
+    {%- if a and a.photo %}<img class="byline-avatar" src="{{ a.photo }}" alt="">{% endif -%}
+    <span>{{ a.name if a else id }}</span>
+  </a>
+</div>
+{%- endmacro %}

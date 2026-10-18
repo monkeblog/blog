@@ -1,14 +1,14 @@
 ---
 layout: layouts/base.njk
 ---
-{%- from "macros.njk" import postTags, authorLink %}
+{%- from "macros.njk" import postTags, authorByline %}
 <article>
   <header>
     <h2>{{ title }}</h2>
     <div class="meta">
-      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> ·
-      {{ authorLink(author, authors) }}
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
     </div>
+    {{ authorByline(author, authors) }}
   </header>
 
   {{ content | safe }}
