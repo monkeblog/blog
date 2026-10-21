@@ -2,16 +2,16 @@
   "author-1": {
     "name": "Mizaru",
     "photo": "/pictures/author-1.jpg",
-    "bio": "A short bio — background, interests, what they write about."
+    "bio": "The oldest"
   },
   "author-2": {
     "name": "Kikazaru",
     "photo": "/pictures/author-2.jpg",
-    "bio": "A short bio — background, interests, what they write about."
+    "bio": "The monkey in the middle"
   },
   "author-3": {
     "name": "Imazaru",
     "photo": "/pictures/author-3.jpg",
-    "bio": "A short bio — background, interests, what they write about."
+    "bio": "The youngest"
   }
 }

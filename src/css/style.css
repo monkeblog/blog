@@ -244,7 +244,7 @@ a:hover { text-decoration: none; }
 .author {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 1.25rem;
   text-align: center;
   scroll-margin-top: 4rem;
