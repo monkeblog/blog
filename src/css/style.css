@@ -55,7 +55,7 @@ a:hover { text-decoration: none; }
 /* Banner image: drop your photo into pictures/ as banner.jpg (or change the
    filename below). It always fills the banner and scales with the window. */
 .banner {
-  min-height: clamp(120px, 18vw, 260px);
+  min-height: clamp(120px, 18vw, 300px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +70,7 @@ a:hover { text-decoration: none; }
   margin: 0;
   font-size: clamp(2rem, 5vw, 3.5rem);
   letter-spacing: 0.02em;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.7);
 }
 .banner h1 a { color: inherit; text-decoration: none; }
 
@@ -100,7 +100,7 @@ a:hover { text-decoration: none; }
   border-bottom: 3px solid transparent;
 }
 /* Hover: same underline bar as the current page, but not bold */
-.tabs a:hover { border-bottom-color: var(--accent); }
+.tabs a:hover { color: var(--text); border-bottom-color: var(--accent); }
 .tabs a[aria-current="page"] {
   color: var(--text);
   border-bottom-color: var(--accent);
@@ -201,13 +201,12 @@ a:hover { text-decoration: none; }
 }
 
 /* ---------- Archive ---------- */
-.tag-filter {
+.filter-status, .no-results {
   font-family: var(--font-ui);
   font-size: 0.9rem;
   color: var(--muted);
   margin-bottom: 1rem;
 }
-.all-tags { margin-bottom: 1.5rem; }
 
 .archive h3 {
   font-family: var(--font-ui);
@@ -231,7 +230,6 @@ a:hover { text-decoration: none; }
 }
 .archive li .entry > a { color: var(--text); text-decoration: none; }
 .archive li .entry > a:hover { color: var(--accent); }
-.archive li .tags { margin-top: 0.2rem; }
 
 /* ---------- About: author blocks ---------- */
 .authors {
@@ -387,3 +385,55 @@ article hr.section-break::before {
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* Archive: tag list at the bottom */
+.tag-index { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+/* Banner title: small "The" sitting above the main title.
+   The big title is what's centred in the banner; "The" floats above it.
+   --the-x: how far right "The" sits (% of the title's width)
+   --the-y: gap between "The" and the big title (negative = overlap) */
+.site-title {
+  --the-x: 4%;
+  --the-y: 0.05em;
+}
+.site-title a {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+.title-small {
+  position: absolute;
+  left: var(--the-x);
+  bottom: 100%;
+  margin-bottom: var(--the-y);
+  font-size: 0.4em;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Archive: author filter */
+.author-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.author-filter a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.75rem 0.2rem 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.author-filter a[data-author=""] { padding-left: 0.75rem; }
+.author-filter a .byline-avatar { width: 1.5rem; height: 1.5rem; }
+.author-filter a:hover { border-color: var(--accent); }
+.author-filter a.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+

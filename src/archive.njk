@@ -4,14 +4,21 @@ title: Archive
 mainClass: archive
 permalink: /archive/
 ---
-{%- from "macros.njk" import postTags, authorLink %}
 <h2>Archive</h2>
 
-<!-- Filled automatically from the posts' data-tags (main.js) -->
-<div class="tags all-tags"></div>
+<!-- Filter by author: /archive/?author=author-1 -->
+<nav class="author-filter" aria-label="Filter by author">
+  <a href="/archive/" data-author="">All</a>
+  {%- for id, a in authors %}
+  <a href="/archive/?author={{ id }}" data-author="{{ id }}">
+    {%- if a.photo %}<img class="byline-avatar" src="{{ a.photo }}" alt="">{% endif -%}
+    <span>{{ a.name }}</span>
+  </a>
+  {%- endfor %}
+</nav>
 
-<p class="tag-filter" hidden>
-  Showing posts tagged <strong class="tag-name"></strong> · <a href="/archive/">show all</a>
+<p class="filter-status" hidden>
+  Showing posts <span class="filter-text"></span> · <a href="/archive/">show all</a>
 </p>
 
 {%- for group in collections.postsByYear %}
@@ -19,15 +26,22 @@ permalink: /archive/
   <h3>{{ group.year }}</h3>
   <ul>
     {%- for post in group.posts %}
-    <li data-tags="{{ post.data.tags | topicTags | join(', ') }}">
+    <li data-author="{{ post.data.author }}" data-tags="{{ post.data.tags | topicTags | join(', ') }}">
       <time datetime="{{ post.date | isoDate }}">{{ post.date | shortDate }}</time>
       <div class="entry">
         <a href="{{ post.url }}">{{ post.data.title }}</a>
-        <div class="meta">by {{ authorLink(post.data.author, authors) }}</div>
-        {{ postTags(post.data.tags) }}
+        <div class="meta">by <a href="/archive/?author={{ post.data.author }}">{{ authors[post.data.author].name if authors[post.data.author] else post.data.author }}</a></div>
       </div>
     </li>
     {%- endfor %}
   </ul>
 </section>
 {%- endfor %}
+
+<p class="no-results" hidden>No posts match this filter.</p>
+
+<!-- All tags, filled automatically from the posts' data-tags (main.js) -->
+<section class="tag-index">
+  <h3>Tags</h3>
+  <div class="tags all-tags"></div>
+</section>

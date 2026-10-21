@@ -9,7 +9,12 @@
 </head>
 <body>
   <header class="banner">
-    <h1><a href="/">{{ site.title }}</a></h1>
+    <h1 class="site-title">
+      <a href="/" aria-label="{{ site.title }}">
+        {%- if site.titleSmall %}<span class="title-small">{{ site.titleSmall }}</span>{% endif -%}
+        <span class="title-large">{{ site.titleLarge or site.title }}</span>
+      </a>
+    </h1>
   </header>
 
   {%- set nav = [

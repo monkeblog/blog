@@ -25,46 +25,62 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ---------- Tag filter (Archive page only) ----------
+  // ---------- Archive filters: ?author=author-1 and/or ?tag=embedded ----------
   var archive = document.querySelector(".archive");
   if (!archive) return;
 
+  var params = new URLSearchParams(location.search);
+  var author = params.get("author");
+  var tag = params.get("tag");
   var items = archive.querySelectorAll("li[data-tags]");
-  var tagOf = function (li) {
+  var tagsOf = function (li) {
     return li.dataset.tags.split(",").map(function (t) { return t.trim(); }).filter(Boolean);
   };
 
-  // Build the "all tags" list from the posts, so you never maintain it by hand.
-  var counts = {};
-  items.forEach(function (li) {
-    tagOf(li).forEach(function (t) { counts[t] = (counts[t] || 0) + 1; });
+  // Author filter: highlight the active one
+  archive.querySelectorAll(".author-filter a").forEach(function (a) {
+    if ((a.dataset.author || null) === author) a.classList.add("active");
   });
-  var allTags = archive.querySelector(".all-tags");
-  var active = new URLSearchParams(location.search).get("tag");
 
-  if (allTags) {
-    Object.keys(counts).sort().forEach(function (t) {
+  // Tag list at the bottom, built from the posts
+  var allTags = {};
+  items.forEach(function (li) { tagsOf(li).forEach(function (t) { allTags[t] = true; }); });
+  var tagBox = archive.querySelector(".all-tags");
+  if (tagBox) {
+    Object.keys(allTags).sort().forEach(function (t) {
       var a = document.createElement("a");
-      a.className = "tag" + (t === active ? " active" : "");
+      a.className = "tag" + (t === tag ? " active" : "");
       a.href = "?tag=" + encodeURIComponent(t);
-      a.textContent = t + " (" + counts[t] + ")";
-      allTags.appendChild(a);
+      a.textContent = t;
+      tagBox.appendChild(a);
     });
   }
 
-  if (!active) return;
+  if (!author && !tag) return;
 
+  var shown = 0;
   items.forEach(function (li) {
-    li.hidden = tagOf(li).indexOf(active) === -1;
+    var ok = (!author || li.dataset.author === author) &&
+             (!tag || tagsOf(li).indexOf(tag) !== -1);
+    li.hidden = !ok;
+    if (ok) shown++;
   });
-  // Hide year groups with no matching posts
   archive.querySelectorAll("section.year").forEach(function (sec) {
     sec.hidden = !sec.querySelector("li[data-tags]:not([hidden])");
   });
+  var none = archive.querySelector(".no-results");
+  if (none) none.hidden = shown > 0;
 
-  var filter = archive.querySelector(".tag-filter");
-  if (filter) {
-    filter.hidden = false;
-    filter.querySelector(".tag-name").textContent = active;
+  // "Showing posts by X · tagged Y · show all"
+  var status = archive.querySelector(".filter-status");
+  if (status) {
+    var parts = [];
+    if (author) {
+      var link = archive.querySelector('.author-filter a[data-author="' + author + '"] span');
+      parts.push("by " + (link ? link.textContent : author));
+    }
+    if (tag) parts.push("tagged " + tag);
+    status.querySelector(".filter-text").textContent = parts.join(", ");
+    status.hidden = false;
   }
 });

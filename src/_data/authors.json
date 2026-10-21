@@ -1,16 +1,16 @@
 {
   "author-1": {
-    "name": "Author One",
+    "name": "Mizaru",
     "photo": "/pictures/author-1.jpg",
     "bio": "A short bio — background, interests, what they write about."
   },
   "author-2": {
-    "name": "Author Two",
+    "name": "Kikazaru",
     "photo": "/pictures/author-2.jpg",
     "bio": "A short bio — background, interests, what they write about."
   },
   "author-3": {
-    "name": "Author Three",
+    "name": "Imazaru",
     "photo": "/pictures/author-3.jpg",
     "bio": "A short bio — background, interests, what they write about."
   }
