@@ -4,7 +4,7 @@ date: 2026-02-05
 author: author-2
 tags: 
 ---
-
+![alt text](/pictures/JVE.jpg)
 I've been seeing some discourse about the Epstein interview, with some people being impressed by his familiarity with science while others saw him as a bloviating circumlocuter. Despite this, I didn't see much discussion about Epstein's actual correctness, which I will do here.
 
 To be upfront, I think Epstein was a giant pseud. That is not to say he was unintelligent (that is another discussion), but when it comes to science all of his knowledge was clearly second or third hand and he had no real understanding of what he was talking about. Which is about what I would expect for a socialite rubbing elbows with scientists hoping that some of the intellectual veneer will wear off on him. This means that Epstein was directionally correct in some avant-garde ways that could impress a normie, but he was unable to elaborate on them or provide good examples.
