@@ -287,6 +287,11 @@ article blockquote {
   color: var(--muted);
 }
 
+article p {
+  margin: 0 0 1em;
+  font-size: 1.2rem;
+}
+
 .more { font-family: var(--font-ui); font-size: 0.95rem; }
 
 /* ---------- Footer ---------- */
