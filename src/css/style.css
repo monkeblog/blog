@@ -474,3 +474,16 @@ article figcaption {
   font-family: var(--font-ui);
   font-size: 0.9rem;
 }
+
+/* About page: each author card is a link to their posts.
+   Hover = bolder outline, like the tabs (no other change). */
+a.author {
+  display: block;
+  border-radius: 0;
+  color: var(--text);
+  text-decoration: none;
+}
+a.author:hover {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 0.25px var(--accent);   /* thickens the outline without shifting layout */
+}
