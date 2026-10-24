@@ -113,10 +113,11 @@ export default function (eleventyConfig) {
   });
 
   return {
-    // Subfolder the site is served from. GitHub Pages project sites live at
-    // username.github.io/<repo>/, so the deploy workflow sets PATH_PREFIX to "/<repo>/".
-    // Locally (npm start) it stays "/". HtmlBasePlugin rewrites every link/image for it.
-    pathPrefix: process.env.PATH_PREFIX || "/",
+    // Subfolder the site is served from. The repo monkeblog/blog is published at
+    // monkeblog.github.io/blog/, so builds on GitHub use "/blog/". Locally (npm start) it's "/".
+    // HtmlBasePlugin rewrites every link and image for it.
+    // (If you add a custom domain later, change "/blog/" to "/".)
+    pathPrefix: process.env.PATH_PREFIX || (process.env.GITHUB_ACTIONS ? "/blog/" : "/"),
     dir: { input: "src", output: "_site" },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
