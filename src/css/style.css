@@ -133,7 +133,7 @@ a:hover { text-decoration: none; }
 /* Fixed-width parchment page. As the window narrows, the margins shrink;
    once the window is narrower than the page, the page fills the window.
    Set --page-width to half your screen width (screen.width / 2). */
-:root { --page-width: 740px; }
+:root { --page-width: calc(59ch + 6rem); }
 
 .content {
   flex: 1;
@@ -143,6 +143,7 @@ a:hover { text-decoration: none; }
   padding: 2.5rem 3rem 4rem;
   background: var(--bg);
   box-shadow: 0 0 24px rgba(60, 40, 15, 0.18);
+  overflow-wrap: break-word;
 }
 
 /* Smaller inner padding on phones */
