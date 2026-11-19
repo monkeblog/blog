@@ -14,6 +14,8 @@ The break above is written as `***` on its own line. A plain line is `---`:
 
 ---
 
+
+
 Like that.
 
 llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll hjkhkj
@@ -29,5 +31,5 @@ Images and GIFs are regular Markdown — `![alt text](/pictures/name.gif)` — o
 
 Footnotes can go anywhere in the text.[^why]
 
-[^1]: Click this note's number to jump back to where it was referenced.
+[^1]: https://www.businessinsider.com/alex-karp-bio-palantir-ceo
 [^why]: Footnote labels can be numbers or words; they're always shown as numbers, in order.
