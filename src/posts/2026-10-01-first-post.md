@@ -4,6 +4,7 @@ date: 2026-10-01
 author: author-1
 tags: [embedded, notes]
 ---
+
 This is a template post.[^1] Copy this file for each new post and change the front matter above. Home, the Archive and tags update automatically.
 
 > A quote looks like this.
@@ -14,11 +15,7 @@ The break above is written as `***` on its own line. A plain line is `---`:
 
 ---
 
-
-
 Like that.
-
-llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll hjkhkj
 
 ```c
 // code blocks look like this
@@ -29,7 +26,9 @@ Images and GIFs are regular Markdown — `![alt text](/pictures/name.gif)` — o
 
 {% figure "/pictures/banner.jpg", "Mountains at sunset", "An image with a caption." %}
 
+Links are written [like this](https://www.11ty.dev), a bare URL like https://www.11ty.dev links itself, and links to other posts [stay in the same tab](/posts/second-example-post/).
+
 Footnotes can go anywhere in the text.[^why]
 
-[^1]: https://www.businessinsider.com/alex-karp-bio-palantir-ceo
+[^1]: Click this note's number to jump back to where it was referenced.
 [^why]: Footnote labels can be numbers or words; they're always shown as numbers, in order.

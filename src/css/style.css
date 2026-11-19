@@ -488,3 +488,14 @@ a.author:hover {
   border-color: var(--accent);
   box-shadow: inset 0 0 0 0.25px var(--accent);   /* thickens the outline without shifting layout */
 }
+
+/* ---------- Links in posts ---------- */
+article a { text-underline-offset: 0.15em; }
+/* Small arrow after links to other sites (delete to remove) */
+/*article a.external::after {
+  content: "↗";
+  font-size: 0.7em;
+  margin-left: 0.1em;
+  vertical-align: super;
+  line-height: 0;
+}*/

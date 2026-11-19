@@ -31,6 +31,25 @@ export default function (eleventyConfig) {
     };
   });
 
+  // ---------- Links in posts ----------
+  // [link text](https://example.com)  — standard Markdown link
+  // Bare URLs like https://example.com are turned into links automatically.
+  // Links to other sites open in a new tab; links within the blog don't.
+  eleventyConfig.amendLibrary("md", (md) => {
+    md.set({ linkify: true });
+    const defaultOpen = md.renderer.rules.link_open ||
+      ((tokens, idx, options, env, slf) => slf.renderToken(tokens, idx, options));
+    md.renderer.rules.link_open = (tokens, idx, options, env, slf) => {
+      const href = tokens[idx].attrGet("href") || "";
+      if (/^https?:\/\//.test(href)) {
+        tokens[idx].attrSet("target", "_blank");
+        tokens[idx].attrSet("rel", "noopener noreferrer");
+        tokens[idx].attrJoin("class", "external");
+      }
+      return defaultOpen(tokens, idx, options, env, slf);
+    };
+  });
+
   const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
   // Image with a caption:  {% figure "/pictures/cat.gif", "Alt text", "Caption (optional)" %}
