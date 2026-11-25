@@ -36,6 +36,9 @@ I don't know why we would ever need this but it's here
 int main(void) { return 0; }
 ```
 
+### Tags
+Notice the tags on the bottom. I'm debating if they should have sharp corners or have the round corners.
+
 
 
 [^1]: Click this note's number to jump back to where it was referenced.
