@@ -17,6 +17,8 @@ A big point T. Greer makes is that the Silicon Valley elites are, unlike the Civ
 
 I just have a few thoughts I'd like to contribute on this topic.
 
+***
+
 Unfortunately, it's true. It's clear the Silicon Valley elite are not thinking seriously about building the right foundations for their children. One only needs to take a glance at the familial arrangements (or lack thereof) of some of these elites and the discourse on how hard it is to date in SF. Alex Karp himself said the idea of children gives him "hives." [^2] However, where they cannot propagate their genes, they can propagate their memes [^3]. In this way, perhaps there is a developing system of institutions in place to raise the next generation of engineering elites, just not biologically. 
 
 > That this world, and all its people, are diseased. Free will is a myth. Religion is a joke. We are all connected by something far greater. **Memes**. The DNA of the soul. They shape our will. They are the culture -- they are everything we pass on.
