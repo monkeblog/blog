@@ -53,7 +53,7 @@ a:hover { text-decoration: none; }
 
 /* ---------- Banner ---------- */
 /* Banner image: drop your photo into pictures/ as banner.jpg (or change the
-   filename below). It always fills the banner and scales with the window. */
+ *filename below). It always fills the banner and scales with the window. */
 .banner {
   min-height: clamp(120px, 18vw, 260px);
   display: flex;
@@ -63,8 +63,8 @@ a:hover { text-decoration: none; }
   text-align: center;
   color: var(--banner-text);
   background:
-    linear-gradient(var(--banner-overlay), var(--banner-overlay)),
-    url("../pictures/banner.jpg") center / cover no-repeat;
+  linear-gradient(var(--banner-overlay), var(--banner-overlay)),
+  url("../pictures/banner.jpg") center / cover no-repeat;
 }
 .banner h1 {
   margin: 0;
@@ -115,13 +115,15 @@ a:hover { text-decoration: none; }
   width: 2.25rem;
   height: 2.25rem;
   border: 1px solid var(--border);
-  border-radius: 50%;
   background: var(--bg);
   color: var(--text);
   font-size: 1rem;
   cursor: pointer;
+  border-radius: 50%;
 }
 .theme-toggle:hover { border-color: var(--accent); }
+
+:root:not([data-theme="dark"]) .theme-toggle { padding-top: 4px; }
 
 @media (max-width: 600px) {
   .tabs a { padding: 0.9rem 0.75rem; }
@@ -131,8 +133,8 @@ a:hover { text-decoration: none; }
 
 /* ---------- Centre page ---------- */
 /* Fixed-width parchment page. As the window narrows, the margins shrink;
-   once the window is narrower than the page, the page fills the window.
-   Set --page-width to half your screen width (screen.width / 2). */
+ * once the window is narrower than the page, the page fills the window.
+ * Set --page-width to half your screen width (screen.width / 2). */
 :root { --page-width: calc(59ch + 6rem); }
 
 .content {
@@ -171,11 +173,17 @@ a:hover { text-decoration: none; }
 .tag {
   font-family: var(--font-ui);
   font-size: 0.75rem;
-  padding: 0.1rem 0.6rem;
-  border-radius: 999px;
+  padding: 0.1rem 0.9rem;
   background: var(--tag-bg);
   color: var(--muted);
   text-decoration: none;
+  --cut: 12px;
+  clip-path: polygon(
+    var(--cut) 0, calc(100% - var(--cut)) 0,
+                     100% var(--cut), 100% calc(100% - var(--cut)),
+                     calc(100% - var(--cut)) 100%, var(--cut) 100%,
+                     0 calc(100% - var(--cut)), 0 var(--cut)
+  );
 }
 .tag::before { content: "#"; opacity: 0.6; }
 .tag:hover, .tag.active { background: var(--accent); color: var(--bg); }
@@ -245,7 +253,6 @@ a:hover { text-decoration: none; }
 .author {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
   padding: 1.25rem;
   text-align: center;
   scroll-margin-top: 4rem;
@@ -255,7 +262,7 @@ a:hover { text-decoration: none; }
   width: 88px;
   height: 88px;
   margin: 0 auto 0.75rem;
-  border-radius: 50%;
+  border-radius: 50%;           /* profile pictures stay circular */
   background: var(--tag-bg);
   color: var(--muted);
   display: flex;
@@ -278,7 +285,6 @@ article img {
   max-width: 100%;
   height: auto;
   margin: 1.5rem auto;
-  border-radius: 4px;
 }
 article pre {
   background: var(--surface);
@@ -313,7 +319,7 @@ footer {
 hr.footnotes-sep { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0 1rem; }
 .footnotes { font-size: 0.95rem; color: var(--muted); }
 .footnotes-list { list-style: none; padding: 0; }
-.footnote-item { padding: 0.2rem 0.25rem; border-radius: 4px; }
+.footnote-item { padding: 0.2rem 0.25rem; }
 .footnote-item:target { background: var(--tag-bg); }
 /* The note's number links back to where it was referenced */
 .footnote-num { float: left; width: 1.75rem; text-decoration: none; }
@@ -389,7 +395,7 @@ article hr.section-break::before {
 .byline-avatar {
   width: 1.75rem;
   height: 1.75rem;
-  border-radius: 50%;
+  border-radius: 50%;           /* profile pictures stay circular */
   object-fit: cover;
 }
 
@@ -397,9 +403,9 @@ article hr.section-break::before {
 .tag-index { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
 
 /* Banner title: small "The" sitting above the main title.
-   The big title is what's centred in the banner; "The" floats above it.
-   --the-x: how far right "The" sits (% of the title's width)
-   --the-y: gap between "The" and the big title (negative = overlap) */
+ * The big title is what's centred in the banner; "The" floats above it.
+ * --the-x: how far right "The" sits (% of the title's width)
+ * --the-y: gap between "The" and the big title (negative = overlap) */
 .site-title {
   --the-x: 4%;
   --the-y: 0.05em;
@@ -433,11 +439,11 @@ article hr.section-break::before {
   gap: 0.4rem;
   padding: 0.2rem 0.75rem 0.2rem 0.25rem;
   border: 1px solid var(--border);
-  border-radius: 999px;
   font-family: var(--font-ui);
   font-size: 0.85rem;
   color: var(--text);
   text-decoration: none;
+  border-radius: 999px;
 }
 .author-filter a[data-author=""] { padding-left: 0.75rem; }
 .author-filter a .byline-avatar { width: 1.5rem; height: 1.5rem; }
@@ -466,7 +472,6 @@ article figcaption {
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: 4px;
 }
 .embed-tweet .twitter-tweet { margin: 0 auto !important; }
 .embed-tweet blockquote.twitter-tweet {   /* fallback before the tweet loads */
@@ -477,10 +482,9 @@ article figcaption {
 }
 
 /* About page: each author card is a link to their posts.
-   Hover = bolder outline, like the tabs (no other change). */
+ *Hover = bolder outline, like the tabs (no other change). */
 a.author {
   display: block;
-  border-radius: 0;
   color: var(--text);
   text-decoration: none;
 }
@@ -493,9 +497,9 @@ a.author:hover {
 article a { text-underline-offset: 0.15em; }
 /* Small arrow after links to other sites (delete to remove) */
 /*article a.external::after {
-  content: "↗";
-  font-size: 0.7em;
-  margin-left: 0.1em;
-  vertical-align: super;
-  line-height: 0;
-}*/
+ c *ontent: "↗";
+ font-size: 0.7em;
+ margin-left: 0.1em;
+ vertical-align: super;
+ line-height: 0;
+ }*/
