@@ -68,7 +68,8 @@ a:hover { text-decoration: none; }
 }
 .banner h1 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  /* Shrinks with the window so the title always fits on one line */
+  font-size: clamp(1.25rem, 6.5vw, 3.5rem);
   letter-spacing: 0.02em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
@@ -115,15 +116,21 @@ a:hover { text-decoration: none; }
   width: 2.25rem;
   height: 2.25rem;
   border: 1px solid var(--border);
+  border-radius: 50%;
   background: var(--bg);
   color: var(--text);
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 50%;
+  /* Centre the icon exactly (the page's tall line-height pushed it off) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
 }
+/* The moon glyph sits high in most fonts; nudge it down (tweak to taste) */
+:root:not([data-theme="dark"]) .theme-toggle { padding-top: 2px; }
 .theme-toggle:hover { border-color: var(--accent); }
-
-:root:not([data-theme="dark"]) .theme-toggle { padding-top: 4px; }
 
 @media (max-width: 600px) {
   .tabs a { padding: 0.9rem 0.75rem; }
@@ -414,6 +421,7 @@ article hr.section-break::before {
   position: relative;
   display: inline-block;
   line-height: 1;
+  white-space: nowrap;   /* keep the title on one line so "The" stays put */
 }
 .title-small {
   position: absolute;
