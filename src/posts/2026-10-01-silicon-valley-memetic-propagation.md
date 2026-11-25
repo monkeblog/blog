@@ -1,5 +1,5 @@
 ---
-title: The Memetic Reproduction of Silicon Valley's elites
+title: Silicon Valley's Memetic Reproductive Process
 date: 2026-11-17
 author: author-3
 tags: 
@@ -36,17 +36,13 @@ T. Greer mentions that a new development of the Gilded Age was that of the busin
 
 In like fashion, you could say that the developments of the 20th century have led to the formation of a new profession, namely the white-collar (software) engineer. Previously, engineering was not seen as an elite profession, but belonging to the workers and not the intellectuals. But as World War II cemented the power of scientific brilliance and the military-industrial complex in the ensuing Cold War, it turned out that engineering was pretty hard and innovations required more scientific intelligence, which meant more schooling. As a result people were willing to pay big money and salaries to those that could do it, and so more specialized schooling was developed to 1.) find unique talent and 2.) train people for this work. Bigger salaries for engineers led to the creation of the white-collar engineer, living closer to an upper-class life, culminating so far in the software engineer (which is being dramatically changed by LLMs but that's another topic).
 
-It's quite common nowadays for families of means in the upper-middle class suburbs of America to send their children to engineering schools, or for students at elite universities to study engineering, where the elite engineering companies can recruit them to join their ranks. A big salary, along with rising equity and shares, can amass large amounts of wealth that contributes to engineering as a suitably prestigious profession to pursue. Nowadays in universities around America, young people can attend and be prepared to join the engineering corporations as the next elites. In the Gilded Age, the Ivy Leagues shaped curricula to train the businessmen, and we can see that a new set of universities in America are shaping their curricula to become pipelines to work for the Silicon Valley engineering elite companies, with heavy sponsorships from the Silicon Valley corporations. Stanford, Berkeley, Waterloo, Purdue, Georgia Tech, UT Austin, to name some. Notice how none of these are Ivy Leagues. 
+It's quite common nowadays for families of means in the upper-middle class suburbs of America to send their children to engineering schools, or for students at elite universities to study engineering, where the elite engineering companies can recruit them to join their ranks. A big salary, along with rising equity and shares, can amass large amounts of wealth that contributes to engineering as a suitably prestigious profession to pursue. Nowadays in universities around America, young people can attend and be prepared to join the engineering corporations as the next elites. In the Gilded Age, the Ivy Leagues shaped curricula to train the businessmen, and we can see that a new set of universities in America are shaping their curricula to become pipelines to work for the Silicon Valley engineering elite companies, with heavy sponsorships from the engineering corporations. Stanford, Berkeley, Waterloo, Purdue, Georgia Tech, UT Austin, to name some. Notice how none of these are Ivy Leagues. 
 
 With all this in place, why would the Silicon Valley elites bother to think about the foundations for their children? (If there even are any) Their memes are already propagating so much faster than their genes ever could, with tons of youth around the world are aspiring to join them already.
 
 ***
 
-I've said all this just to describe a process I see at work in our society today, and has been developing well over the past twenty or so years. I've said basically nothing about whether I like it or not, or whether I think it's good. 
-
-In short, I'm not sure if I like this. I am pretty strongly against any form of elitism. This idea that society is driven by an elite class of citizens implies a separation between people, one in which benefits and advancements come to one at the expense of the masses. It's important to note that in the Gilded Age, economic power may have been excluded from the white ethnics (Irish, Italians, etc.) but women and black people couldn't even vote, so who knows if life was improving for them as well. 
-
-There must be a new way for society to advance intellectually without this structure of elitism. Too long has scientific, intellectual, and engineering development been pursued by an isolated group of minds while keeping everyone else out, unable to benefit and learn. Of course, we need to find talent, recognize that talent, and give it space to do great work, but this is distinct from forming an privileged class of citizens. How can we build a culture that promotes knowledge and accomplishment, but also where new knowledge benefits everyone?
+I've said all this just to describe a process I see at work in our society today. I have to say I have mixed feelings about it. I'm an engineering student myself, so I'm kind of a participant in this movement, but I wouldn't say that it's an entirely beneficial one.
 
 [^1]: Co-founder and CEO of Palantir
 
